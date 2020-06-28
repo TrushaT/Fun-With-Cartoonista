@@ -1,28 +1,26 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<div class="container pt-5">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
 
-{% block content %}
-        <div class="container pt-5">
-            <form method="POST">
-                {% csrf_token %}
-                <div class = "form-group">
-                    
-                </div>
-    
-                <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" class="form-control" name="title" placeholder="Add title">
-                </div>
-                <div class="form-group">
-                    <label>username</label>
-                    <textarea type="text" class="form-control" name="username" placeholder="username"></textarea>
-                </div>
-                <!--<div class="form-group">
-                    <label>Tags</label>
-                    <input type="text" data-role="tagsinput" class="form-control" name="tags">
-                </div>-->
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            <!--<p>Common Tags: 
+        </div>
+
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" name="title" placeholder="Add title">
+        </div>
+        <div class="form-group">
+            <label>username</label>
+            <textarea type="text" class="form-control" name="username" placeholder="username"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Tags</label>
+            <input type="text" data-role="tagsinput" class="form-control" name="tags">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <!--<p>Common Tags: 
             {% for mt in common_tags %}
                 <a href="#" class="badge badge-success">{{mt}}</a>
             {% endfor %}
@@ -47,5 +45,5 @@
                     </div>
                     {% endfor %}
             </div>-->
-        </div>    
-{% endblock content %}               
+</div>
+{% endblock content %}
