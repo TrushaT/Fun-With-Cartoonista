@@ -1,0 +1,237 @@
+{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Overlock&display=swap" rel="stylesheet">
+    <title></title>
+</head>
+<style>
+    share-buttons img {
+     width: 35px;
+    padding: 5px;
+    border: 0;
+    box-shadow: 0;
+    display: inline;
+    }
+ 
+    img {
+        display: block;
+        max-width: 500px;
+        max-height: 500px;
+    }
+    
+    body {
+        margin-top: 1rem;
+        font-family: 'Open Sans', sans-serif;
+    }
+    
+    .gallery-block {
+        padding-bottom: 60px;
+        padding-top: 60px;
+    }
+    
+    .gallery-block .heading {
+        margin-bottom: 50px;
+        text-align: center;
+    }
+    
+    .gallery-block .heading h2 {
+        font-weight: bold;
+        font-size: 3rem;
+        text-transform: uppercase;
+    }
+    
+    .gallery-block.cards-gallery h6 {
+        font-size: 17px;
+        font-weight: bold;
+    }
+    
+    .gallery-block.cards-gallery .card {
+        transition: 0.4s ease;
+    }
+    
+    .gallery-block.cards-gallery .card img {
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    .gallery-block.cards-gallery .card-body {
+        text-align: center;
+    }
+    
+    .gallery-block.cards-gallery .card-body .card-title {
+        font-size: 1.5rem;
+        font-family: 'Arima Madurai', cursive;
+    }
+    
+    .gallery-block.cards-gallery a {
+        color: #212529;
+    }
+    
+    .gallery-block.cards-gallery a:hover {
+        text-decoration: none;
+    }
+    
+    .gallery-block.cards-gallery .card {
+        margin-bottom: 30px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    @media (min-width: 576px) {
+        .gallery-block .transform-on-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15) !important;
+        }
+    }
+</style>
+
+<body>
+    <h2 style="margin-bottom: 1rem;">Upload Image</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image">
+        <button type="submit" class="btn btn-outline-dark">Upload image</button>
+    </form>
+    <br> 
+    {% if img_url %}
+        <h2> Cartoonista! Result </h2>
+        <img id="image_id" width="500" height="500" src="{{MEDIA_URL}}{{img_url}}"></img>
+        <br>
+
+        <a href="{{MEDIA_URL}}{{img_url}}" download>
+            <button class="btn btn-outline-primary mr-5"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
+        </a>
+        <!-- Pinterest -->
+        <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());" id="btn2" class="btn btn-outline-success">
+        <img src="https://simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" >
+        </a>
+        <a href="mailto:?Subject=Simple Share Buttons&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://simplesharebuttons.com"id="btn2" class="btn btn-outline-success">
+            <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
+        </a>
+        <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank" id="btn2" class="btn btn-outline-success">
+        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+    </a>
+        <!-- <button type="btn3" class="btn btn-light">Gallery</button> -->
+        <p></p>
+    {% else %} 
+    {% endif %}
+    <section class="gallery-block cards-gallery">
+        <h2 style="margin-bottom: 1rem;">Cartoonista! Gallery</h2>
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 transform-on-hover">
+                    <a class="lightbox" href = "{{MEDIA_URL}}media/cartoon_images/img1.png" download>
+                        <img src="{{MEDIA_URL}}media/cartoon_images/img1.png" alt="Card Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Stupid Me </h5>
+                        <small style="font-family: 'Overlock', cursive;">Genisu247</small>
+                        <div style="margin-top: 0.5rem;">
+                                <i class="fa fa-download fa-lg" aria-hidden="true" style="padding: 0.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 transform-on-hover">
+                    <a class="lightbox" href="{{MEDIA_URL}}media/cartoon_images/img2.png" download>
+                        <img src="{{MEDIA_URL}}media/cartoon_images/img2.png" alt="Card Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Adele Goldberg</h5>
+                        <small style="font-family: 'Overlock', cursive;">#womancodes</small>
+                        <div style="margin-top: 0.5rem;">
+
+                            <i class="fa fa-download fa-lg" aria-hidden="true" style="padding: 0.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 transform-on-hover">
+                    <a class="lightbox" href="{{MEDIA_URL}}media/cartoon_images/img3.png" download>
+                        <img src="{{MEDIA_URL}}media/cartoon_images/img3.png" alt="Card Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Fitness</h5>
+                        <small style="font-family: 'Overlock', cursive;">spinachlover</small>
+                        <div style="margin-top: 0.5rem;">
+
+                            <i class="fa fa-download fa-lg" aria-hidden="true" style="padding: 0.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 transform-on-hover">
+                    <a class="lightbox" href="{{MEDIA_URL}}media/cartoon_images/img4.png" download="">
+                        <img src="{{MEDIA_URL}}media/cartoon_images/img4.png" alt="Card Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Love</h5>
+                        <small style="font-family: 'Overlock', cursive;">kathy</small>
+                        <div style="margin-top: 0.5rem;">
+
+                            <i class="fa fa-download fa-lg" aria-hidden="true" style="padding: 0.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 transform-on-hover">
+                    <a class="lightbox" href="{{MEDIA_URL}}media/cartoon_images/img5.png" download>
+                        <img src="{{MEDIA_URL}}media/cartoon_images/img5.png" alt="Card Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Walk Alone</h5>
+                        <small style="font-family: 'Overlock', cursive;">loner1563</small>
+                        <div style="margin-top: 0.5rem;">
+
+                            <i class="fa fa-download fa-lg" aria-hidden="true" style="padding: 0.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 transform-on-hover">
+                    <a class="lightbox" href="{{MEDIA_URL}}media/cartoon_images/img6.png" download>
+                        <img src="{{MEDIA_URL}}media/cartoon_images/img6.png" alt="Card Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">With Nature</h5>
+                        <small style="font-family: 'Overlock', cursive;">greenisbest45</small>
+                        <div style="margin-top: 0.5rem;">
+
+                            <i class="fa fa-download fa-lg" aria-hidden="true" style="padding: 0.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.cards-gallery', {
+            animation: 'slideIn',
+            captions: true,
+            buttons: true,
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+{% endblock %}
