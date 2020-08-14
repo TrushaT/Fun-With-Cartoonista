@@ -6,7 +6,7 @@ from .models import Post
 from .form import PostForm
 from taggit .models import Tag
 
-def upload(reques
+def upload(request):
     if request.method == 'POST' :
         uploaded_file = request.FILES['image']
         fs = FileSystemStorage()
