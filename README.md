@@ -5,13 +5,13 @@ Convert your image into a cartoon with just a click!
 As we know data is all around us and is an integral part of our day-to-day lives. People nowadays are very active on social media and use it for various purposes such as better reach, entertainment, communication, social image and many more. The "socially-active" person loves to send and receive photographs of himself/herself and loves experimenting with them. He/She uses filters to modify the look and feel of the pictures! We have taken this opportunity to create a filter that converts a photograph of a person/animal/scenery etc. into a "cartoonized" version! 
 
 ## What it does
-We allow the user to upload a picture of his/her choice and convert the picture into a cartoon. This converted picture can be downloaded and shared on other platforms. This gives users a platform to share different memories and experiences in the form of cartoons!
+This website facilitates a user to upload pictures of his/her choice to convert it into a cartoon and then download the converted picture. After signing in to the website using Google Sign In or by using email id, the user can upload the pictures to the website along with a caption and desired tags. Along with that, each user has his/her own feed page, which any user can visit if interested. Users can search for posts according to tags taking the help of the search autocomplete feature and then download, like and share the posts if they wish to. All in all, this is a platform to share different memories and experiences in the form of cartoons!
 
-## How we built it
-We used OpenCV Python for processing the image and converting it to a cartoon form. The backend is handled by Django and for the frontend Bootstrap, JavaScript, HTML and CSS have been used.
+## How we built it = What we learnt
+We used OpenCV Python for processing the image and converting it to a cartoon form. For the backend we used Django, for the frontend we used Bootstrap, JavaScript, HTML and CSS. We learnt the importance of teamwork, how to utilize Git for collaboration, how to use time judiciously and have fun while coding! Post the hackathon, we kept working on other features to improve our application. We used various packages such as django-allauth for social provider authentication, Django Rest Framework and AJAX for dynamic like button and django-taggit for tags for image uploading. We also learnt how to use Django's Session Storage for Image uploading.
 
 ## Challenges we ran into
-Both of us were beginners in Django and Computer Vision. It was very difficult to upload and save images using Django. The integration of OpenCV and Django seemed difficult at first! 
+Both of us were beginners in Django and Computer Vision. It was very difficult to upload and store images for a particular session using Django. The integration of OpenCV and Django seemed difficult at first! Communication was a problem as we were not physically present during the hackathon.
 
 ## Accomplishments that we're proud of
 We created something fun and implemented a unique blend of computer vision and entertainment. We got to learn many new things during this journey.
@@ -19,7 +19,4 @@ We created something fun and implemented a unique blend of computer vision and e
 ## What we learned
 We learned to integrate OpenCV and Django. We learned to use time judiciously and have fun with coding!
 
-## What's next for Fun with Cartoonista !
-Users will have the opportunity to upload their fun-filled memories for other users to view using personalised user accounts.
-
-## Video Demo: https://youtu.be/YY3gP_EpOyc
+## Video Demo (Submission for the MLH Data Day Grind Hackathon): https://youtu.be/YY3gP_EpOyc
