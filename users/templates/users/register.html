@@ -1,0 +1,34 @@
+{% extends 'cartoonify/base.html' %}
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+<!--  -->
+{% block content %}
+{% if user.is_authenticated %}
+  <p>Only a logged out user can view</p>
+{% else %}
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">
+                Register Today!
+            </legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Sign Up</button>
+        </div>
+    </form>
+    <div class="border-top pd-3">
+        <small class="text-muted">
+            Already have an account? <a href="{% url 'login' %}" class="ml-2">Log In</a>
+        </small>
+    </div>
+    <hr data="OR" class="hr-text">
+    <div class="mt-4 text-center">
+        <a class="btn btn-light center" href="{% provider_login_url 'google' %}">
+        <img src="https://img.icons8.com/color/48/000000/google-logo.png"/> Sign in with Google</a>
+    </div>
+</div>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends 'cartoonify/base.html' %} {% block content %}
+
+{% if result_img_url %}
+<article class="media content-section mt-3">
+    <div class="media-body">
+        <h2 style="margin-bottom: 1rem;">Select another image to cartoonify! </h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="image">
+            <button type="submit" class="btn btn-outline-dark">Upload Image</button>
+        </form>
+    </div>
+</article>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <h4>Original Image</h4>
+        </div>
+        <div class="col-md-6 text-center">
+            <h4>Cartoonified Image</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{original_img_url}}" style="width:100%">
+        </div>
+        <div class="col-md-6">
+            <img src="{{result_img_url}}" style="width:100%">
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="container">
+    <a href="{{result_img_url}}" download>
+        <button class="btn btn-outline-primary mr-5"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
+    </a>
+    <a href="{% url 'add_post' %}" class="btn btn-outline-dark">Post</a>
+</div>
+
+{% else %} 
+<article class="media content-section mt-3">
+    <div class="media-body">
+        <h2 class="mb-3">Select an image to cartoonify! </h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="image">
+            <button type="submit" class="btn btn-outline-dark">Upload Image</button>
+        </form>
+    </div>
+</article>
+{% endif %} {% endblock content %}

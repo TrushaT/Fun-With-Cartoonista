@@ -1,0 +1,12 @@
+{% extends 'cartoonify/base.html' %} 
+{% load crispy_forms_tags %}
+{% block content %}
+<h1 class="mt-3 mb-3 text-center"> Update Post</h1>
+<form method="post" class="mt-2">
+    {% csrf_token %} 
+    {{form| crispy}}
+    <div class="text-center">
+        <button class="btn btn-success">Update</button>
+    </div>
+</form>
+{% endblock content %}
