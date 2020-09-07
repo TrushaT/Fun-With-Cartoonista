@@ -1,0 +1,5 @@
+# Ignore all .pyc files
+*.pyc
+
+# Ignore folder named '.vscode'
+.vscode/
