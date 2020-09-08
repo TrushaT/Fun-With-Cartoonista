@@ -77,16 +77,6 @@ class UserPostListView(ListView):
         user = get_object_or_404(User,username=self.kwargs.get('username')) 
         return Post.objects.filter(author=user).order_by('-pub_date')
 
-# def tagged(request, slug):
-#     tag = get_object_or_404(Tag, slug=slug)
-#     # Filter posts by tag name  
-#     category_posts = Post.objects.filter(tags=tag)
-#     context = {
-#         'tag':tag,
-#         'category_posts':category_posts,
-#     }
-#     return render(request, 'post/categories.html', context) 
-
 class AddPostView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm

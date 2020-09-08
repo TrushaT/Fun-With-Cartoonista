@@ -9,8 +9,6 @@
         <div class="article-metadata">
             <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
             <small class="text-muted">{{ post.pub_date|date:"F d, Y" }}</small>
-            <!-- Pipe | is used to filter data variables we receive from our view -->
-            <!-- https://docs.djangoproject.com/en/2.0/ref/templates/builtins/#date -->
         </div>
         <h2><a class="article-title" href="{% url 'detail_post' post.id %}">{{ post.title }}</a></h2>
         <p class="article-content">

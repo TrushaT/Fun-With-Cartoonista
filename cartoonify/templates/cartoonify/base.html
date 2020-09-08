@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="{% static 'cartoonify/main.css' %}" type="text/css">
-    {% comment %} <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> {% endcomment %}
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="{% static 'cartoonify/tagsinput.css' %}" type="text/css">
@@ -62,8 +62,7 @@
             <div class="col-md-10 col-xs-8 col-sm-10">
                 {% if messages %} {% for message in messages %}
                 <div class="alert alert-{{ message.tags }}"> {{ message }}</div>
-                {% endfor %} {% endif %}
-                 {% block content %}{% endblock content %}
+                {% endfor %} {% endif %} {% block content %}{% endblock content %}
             </div>
         </div>
         </div>
