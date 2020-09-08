@@ -13,9 +13,6 @@ def home(request):
         recent_file_name = uploaded_file.name
 
         img = cv2.imread(f"media/original_pics/{recent_file_name}") # FILEPATH
-        #print(img)
-
-        # img = cv2.resize(img,(500,650)) # RESIZE IF NEEDED
 
         gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
         gray = cv2.medianBlur(gray, 3)
@@ -26,12 +23,8 @@ def home(request):
             color = cv2.bilateralFilter(color, 5, 14, 7) 
 
         cartoon = cv2.bitwise_and(color, color, mask=edges) # FINAL CARTOON IMAGE
-        print(cartoon)
         
         cv2.imwrite(f'media/cartoonified_images/{recent_file_name}_result.png',cartoon)
-        #print('image saved')
-        # ret, frame_buff = cv2.imencode('.jpg', cartoon) #could be png, update html as well
-        # frame_b64 = base64.b64encode(frame_buff)
         original_img_url = f'media/original_pics/{recent_file_name}'
         result_img_url = f'media/cartoonified_images/{recent_file_name}_result.png'
         request.session['result_img_url'] =  f'cartoonified_images/{recent_file_name}_result.png'

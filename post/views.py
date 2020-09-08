@@ -34,7 +34,6 @@ def autocompleteModel(request):
 
     if 'term' in request.GET:
         qs = Tag.objects.filter(name__icontains=request.GET.get('term'))
-        print(qs)
         tags_list = list()
         for p in qs:
             tags_list.append(p.name)
@@ -119,7 +118,6 @@ class PostDetailView(DetailView):
         stuff = get_object_or_404(Post, id=self.kwargs['pk'])
         context = super(PostDetailView, self).get_context_data()
         context['related_posts'] = stuff.tags.similar_objects()
-        print("Context",context)
         return context
         
 class UpdatePostView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
