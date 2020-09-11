@@ -1,0 +1,346 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Fun With Cartoonista</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'cartoonify/template.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'cartoonify/template.css' %}">
+
+    <link rel="stylesheet" href="{% static 'cartoonify/owl-carousel.css' %}">
+
+    <link rel="stylesheet" href="{% static 'cartoonify/lightbox.css' %}">
+
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{% url 'index' %}" class="logo">
+                            CARTOONISTA!
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                            {% if user.is_authenticated %}
+                            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                            <li><a href="{% url 'profile' %}">My Profile</a></li>
+                            <li><a href="{% url 'user-posts' user.username %}">My Posts Feed</a></li>
+                            <li><a href="{% url 'logout' %}">Logout {{ user.username }}</a></li>
+                            {% else %}
+                            <li class="scroll-to-section"><a href="#features">Features</a></li>
+                            <li class="scroll-to-section"><a href="#projects">Our Picks</a></li>
+                            <li class="scroll-to-section"><a href="#testimonials">Our Team</a></li>
+                            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                            <li><a href="{% url 'login' %}">Login</a></li>
+                            <li><a href="{% url 'register' %}">Sign Up</a></li>
+                            {% endif %}
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner header-text" id="top">
+        <div class="Modern-Slider">
+            <!-- Item -->
+            <div class="item">
+                <div class="img-fill">
+                    <img src="{% static 'images/slide-02.jpg' %}" alt="">
+                    <div class="text-content">
+                        <h3>Fun With Cartoonista!</h3>
+                        <h5>Convert your image into a cartoon with just a click!</h5>
+                        <a href="{% url 'gallery' %}" class="main-stroked-button">Gallery</a>
+                        <a href="{% url 'upload' %}" class="main-filled-button">Try it out now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- // Item -->
+        </div>
+    </div>
+    <div class="scroll-down scroll-to-section"><a href="#features"><i class="fa fa-arrow-down"></i></a></div>
+    <!-- ***** Main Banner Area End ***** -->
+
+    <!-- ***** Features Big Item Start ***** -->
+    <section class="section mt-3" id="features">
+        <div class="container">
+            <div class="left-text-content mb-5">
+                <div class="section-heading">
+                    <h6>Features</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter left move 30px over 0.6s after 0.2s">
+                    <div class="features-item">
+                        <div class="features-icon">
+                            <img src="{% static 'images/features-icon-1.png' %}" alt="">
+                        </div>
+                        <div class="features-content">
+                            <h4>Upload Image</h4>
+                            <p>Upload your image of any format to be cartoonified.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter bottom move 30px over 0.6s after 0.2s">
+                    <div class="features-item">
+                        <div class="features-icon">
+                            <img src="{% static 'images/features-icon-1.png' %}" alt="">
+                        </div>
+                        <div class="features-content">
+                            <h4>Convert and Download</h4>
+                            <p>After uploading, the image will automatically render a cartoonified output which you can download.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter right move 30px over 0.6s after 0.2s">
+                    <div class="features-item">
+                        <div class="features-icon">
+                            <img src="{% static 'images/features-icon-1.png' %}" alt="">
+                        </div>
+                        <div class="features-content">
+                            <h4>Share Away!</h4>
+                            <p>You can share your image by uploading it as a post to our website along with a caption and tags.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-center mb-5" data-scroll-reveal="enter top move 30px over 0.6s after 0.3s">
+            <h5>Check out the example below!</h5>
+        </div>
+        <div class="container" style="border-bottom: 5px solid #f7f7f7; padding-bottom: 3.5rem" data-scroll-reveal="enter bottom move 30px over 0.6s after 0.35s">
+            <div class="row mb-2">
+                <div class="col-md-6 text-center">
+                    <h6>Original Image</h6>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h6>Cartoonified Image</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <img src="{% static 'images/img 3.jpg' %}">
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="{% static 'images/img 3.jpg_result.png' %}">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ***** Projects Area Starts ***** -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="section-heading">
+                        <h6>Our Picks</h6>
+                        <h2>Some of our favourites!</h2>
+                    </div>
+                    <div class="filters">
+                        <ul>
+                            <li class="active" data-filter="*">All</li>
+                            <li data-filter=".por">Portraits</li>
+                            <li data-filter=".ani">Animals</li>
+                            <li data-filter=".lov">Love</li>
+                            <li data-filter=".grp">Groups</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="filters-content">
+                        <div class="row grid">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all por">
+                                <div class="item">
+                                    <a href="{% static 'images/member-item-05.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/member-item-05.jpg_result.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all por">
+                                <div class="item">
+                                    <a href="{% static 'images/member-item-01.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/member-item-01.jpg_result.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all lov">
+                                <div class="item">
+                                    <a href="{% static 'images/Couple1.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/Couple1.jpg_result.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all por">
+                                <div class="item">
+                                    <a href="{% static 'images/member-item-04.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/member-item-04.jpg_result.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all lov">
+                                <div class="item">
+                                    <a href="{% static 'images/Couple2.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/Couple2.jpg_result.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all grp">
+                                <div class="item">
+                                    <a href="{% static 'images/GroupPic1.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/GroupPic1.jpg_result.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all grp">
+                                <div class="item">
+                                    <a href="{% static 'images/GroupPic2.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/GroupPic2.jpg_result.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all ani">
+                                <div class="item">
+                                    <a href="{% static 'images/dog.jpeg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/dog.jpeg_result.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all lov">
+                                <div class="item">
+                                    <a href="{% static 'images/couples-posing-800x450.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'couples-posing-800x450.jpg_result.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Projects Area Ends ***** -->
+
+    <!-- ***** Testimonials Starts ***** -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h6>Our Team</h6>
+                        <h2>Pre-Final Year Engineering Students</h2>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 mobile-bottom-fix-big">
+                    <div class="owl-carousel owl-theme">
+                        <div class="item author-item">
+                            <div class="member-thumb">
+                                <img src="{% static 'images/AkshatBhat.jpg' %}" alt="">
+                                <div class="hover-effect">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4>Akshat Bhat</h4>
+                            <span>Django Developer</span>
+                        </div>
+                        <div class="item author-item">
+                            <div class="member-thumb">
+
+                            </div>
+
+                        </div>
+                        <div class="item author-item">
+                            <div class="member-thumb">
+                                <img src="{% static 'images/Trusha.jpeg' %}" alt="">
+                                <div class="hover-effect">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4>Trusha Talati</h4>
+                            <span>Django Developer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Testimonials Ends ***** -->
+
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6 col-xs-12">
+                    <div class="left-text-content text-center mb-3">
+                        <p>Made with ❤</p>
+                        <p>Happy Cartooning!</p>
+                    </div>
+                    <div class="right-text-content text-center">
+                        <ul class="social-icons">
+                            <li>
+                                <p class="ml-4">Check out our github page</p>
+                            </li>
+                            <li><a target="_blank" rel="nofollow" href="https://github.com/TrushaT/Fun-With-Cartoonista"><i class="fa fa-github"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="{% static 'cartoonify/owl-carousel.js' %}"></script>
+    <script src="{% static 'cartoonify/scrollreveal.min.js' %}"></script>
+    <script src="{% static 'cartoonify/slick.js' %}"></script>
+    <script src="{% static 'cartoonify/lightbox.js' %}"></script>
+    <script src="{% static 'cartoonify/isotope.js' %}"></script>
+
+    <!-- Global Init -->
+    <script src="{% static 'cartoonify/custom.js' %}"></script>
+
+</body>
+
+</html>

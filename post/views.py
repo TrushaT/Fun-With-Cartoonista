@@ -6,7 +6,7 @@ from .forms import PostForm,SearchForm
 from django.urls import reverse_lazy, reverse
 from django.template.defaultfilters import slugify
 from taggit.models import Tag
-from cartoonify.views import home
+from cartoonify.views import upload
 from django.http import HttpResponse, HttpResponseRedirect
 from rest_framework.views import APIView
 from rest_framework.response import Response

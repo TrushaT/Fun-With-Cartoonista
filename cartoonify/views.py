@@ -4,8 +4,10 @@ import cv2
 from django.shortcuts import render,get_object_or_404
 from django.core.files.storage import FileSystemStorage
 
+def index(request):
+    return render(request,'cartoonify/index.html')
 
-def home(request):
+def upload(request):
     if request.method == 'POST' :
         uploaded_file = request.FILES['image']
         fs = FileSystemStorage(location='media/original_pics')
@@ -32,8 +34,8 @@ def home(request):
             'original_img_url': original_img_url,
             'result_img_url' : result_img_url,
         }
-        return render(request, 'cartoonify/home.html', context)
+        return render(request, 'cartoonify/upload.html', context)
 
     else:
-        return render(request, 'cartoonify/home.html')
+        return render(request, 'cartoonify/upload.html')
 

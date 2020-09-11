@@ -3,61 +3,83 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'cartoonify/main.css' %}" type="text/css">
-    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'cartoonify/base.css' %}">
+
+    <link rel="stylesheet" href="{% static 'cartoonify/main.css' %}">
 
     <link rel="stylesheet" href="{% static 'cartoonify/tagsinput.css' %}" type="text/css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
-    <!-- JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="{% static 'cartoonify/tagsinput.js' %}"></script>
-
-
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% if title %}
+    {% if title %}
     <title> Fun With Cartoonista - {{title}}</title>
     {% else %}
     <title>Fun With Cartoonista</title>
     {% endif %}
+
 </head>
 
 <body>
-    <header class="site-header">
-        <nav class="navbar navbar-expand-md navbar-dark bg-steel">
-            <div class="container">
-                <a class="navbar-brand mr-4" href="/">Fun With Cartoonista</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarToggle">
-                    <div class="navbar-nav mr-auto">
-                        <a class="nav-item nav-link" href="{% url 'cartoonify-home' %}">Home</a>
-                        <a class="nav-item nav-link" href="{% url 'gallery' %}">Gallery</a>
-                    </div>
-                    <!-- Navbar Right Side -->
-                    <div class="navbar-nav">
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky background-header mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{% url 'index' %}" class="logo">
+                            CARTOONISTA!
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="{% url 'index' %}">Home</a></li>
+                            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                            {% if user.is_authenticated %}
+                                {% if request.path == '/edit-profile/' %}
+                                <li><a href="{% url 'profile' %}" class="active">My Profile</a></li>
+                                {% else %}
+                                <li><a href="{% url 'profile' %}">My Profile</a></li>
+                                {% endif %}
 
-                        {% if user.is_authenticated %}
-                        <a class="nav-item nav-link" href="{% url 'profile' %}">My Profile</a>
-                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout {{ user.username }}</a> {% else %}
-                        <a class="nav-item nav-link" href="{% url 'login' %}">Log In</a>
-                        <a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a> {% endif %}
+                                <li><a href="{% url 'user-posts' user.username %} class="active"">My Posts Feed</a></li>
 
-                    </div>
+                                <li><a href="{% url 'logout' %}">Logout {{ user.username }}</a></li>
+                            {% else %}
+                                {% if request.path == '/login/' %}
+                                <li><a href="{% url 'login' %}" class="active">Login</a></li>
+                                {% else %}
+                                <li><a href="{% url 'login' %}">Login</a></li>
+                                {% endif %}
+
+                                {% if request.path == '/register/' %}
+                                <li><a href="{% url 'register' %}" class="active">Sign Up</a></li>
+                                {% else %}
+                                <li><a href="{% url 'register' %}">Sign Up</a></li>
+                                {% endif %}
+                            {% endif %}
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
                 </div>
             </div>
-        </nav>
+        </div>
     </header>
-    <main role="main" class="container">
+    <!-- ***** Header Area End ***** -->
+
+    <section class="section" id="features" style="position: relative; margin-top: 7rem;">
         <div class="row">
             <div class="col-md-10 col-xs-8 col-sm-10">
                 {% if messages %} {% for message in messages %}
@@ -65,23 +87,62 @@
                 {% endfor %} {% endif %} {% block content %}{% endblock content %}
             </div>
         </div>
-        </div>
-    </main>
+    </section>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6 col-xs-12">
+                    <div class="left-text-content text-center mb-3">
+                        <p>Made with ❤</p>
+                        <p>Happy Cartooning!</p>
+                    </div>
+                    <div class="right-text-content text-center">
+                        <ul class="social-icons">
+                            <li>
+                                <p class="ml-4">Check out our github page</p>
+                            </li>
+                            <li><a target="_blank" rel="nofollow" href="https://github.com/TrushaT/Fun-With-Cartoonista"><i class="fa fa-github"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="{% static 'cartoonify/owl-carousel.js' %}"></script>
+    <script src="{% static 'cartoonify/scrollreveal.min.js' %}"></script>
+    <script src="{% static 'cartoonify/slick.js' %}"></script>
+    <script src="{% static 'cartoonify/lightbox.js' %}"></script>
+    <script src="{% static 'cartoonify/isotope.js' %}"></script>
+
+    <!-- Global Init -->
+    <script src="{% static 'cartoonify/base.js' %}"></script>
+    <script src="{% static 'cartoonify/tagsinput.js' %}"></script>
+
     <script>
         $(document).ready(function() {
             function updateText(btn, newCount, verb) {
                 btn.text(newCount + " " + verb)
             }
-            $(".like-btn").click(function(e) {
+            $(".like-btn ").click(function(e) {
                 e.preventDefault()
                 var this_ = $(this)
-                var likeUrl = this_.attr("data-href")
+                var likeUrl = this_.attr("data-href ")
                 if (likeUrl) {
                     $.ajax({
                         url: likeUrl,
-                        method: "GET",
+                        method: "GET ",
                         data: {},
                         success: function(data) {
                             console.log(data)
@@ -96,7 +157,7 @@
                         },
                         error: function(error) {
                             console.log(error)
-                            console.log("error occured")
+                            console.log("error occured ")
                         }
                     })
                 }

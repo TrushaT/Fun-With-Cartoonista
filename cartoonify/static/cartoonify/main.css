@@ -1,3 +1,34 @@
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    min-height: 100%;
+}
+
+.container-bg {
+    background-attachment: scroll;
+    background: #ECE9E6;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #FFFFFF, #ECE9E6);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #FFFFFF, #ECE9E6);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+body {
+    /* background: #fafafa; */
+    color: #333333;
+}
+
+.heading {
+    margin-bottom: 2rem;
+    font-family: 'Just Me Again Down Here', cursive;
+    font-size: 6rem;
+    text-transform: uppercase;
+    color: #32325D;
+}
+
 h1,
 h2,
 h3,
@@ -12,7 +43,8 @@ ul {
 }
 
 .bg-steel {
-    background-color: #24292e;
+    /* background-color: #24292e; */
+    background-color: #32325D;
 }
 
 .site-header .navbar-nav .nav-link {

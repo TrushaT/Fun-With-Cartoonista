@@ -1,4 +1,7 @@
-{% extends 'cartoonify/base.html' %}{% block content %}
+{% extends 'cartoonify/base.html' %}
+{% load social_share %}
+
+{% block content %}
 <h1 class="mt-3 mb-3 text-center"> {{ post.title }} </h1>
 <div class="mt-2 text-center"> 
     <img src="{{ post.header_image.url }}" class="img-fluid"> 
@@ -6,15 +9,22 @@
     <div class="mt-2 text-center">
         <a class="btn btn-success mt-2" href="{% url 'update_post' post.pk  %}">Edit</a>
         <a class="btn btn-danger mt-2" href="{% url 'delete_post' post.pk  %}">Delete</a>
+        <a href="{{ post.header_image.url }}" download>
+       
     </div>
     {% else %}
     {% endif %}
     {% if user.is_authenticated %}
-    {% if user in post.likes.all %}
-        <p><a class='like-btn' data-href="{{ post.get_api_like_url }}" data-likes="{{ post.likes.count }}" href=""> {{ post.likes.count }} Unlike</a></p>
-    {% else %}
-        <p><a class='like-btn' data-href="{{ post.get_api_like_url }}" data-likes="{{ post.likes.count }}" href=""> {{ post.likes.count }} Like</a></p>
-    {% endif %}
+        {% if user in post.likes.all %}
+            <p><a class='like-btn' data-href="{{ post.get_api_like_url }}" data-likes="{{ post.likes.count }}" href=""> {{ post.likes.count }} Unlike</a></p>
+        {% else %}
+            <p><a class='like-btn' data-href="{{ post.get_api_like_url }}" data-likes="{{ post.likes.count }}" href=""> {{ post.likes.count }} Like</a></p>
+        {% endif %}
+         <button class="btn btn-outline-primary mr-5"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
+        {% post_to_facebook object_or_url  'Post to fb!' %}
+        {% send_email post.title "Interesting Photo: {{post.title}}. Check it out!" object_or_url "Share via email" %}
+        {% post_to_whatsapp object_or_url "Share ur whatsapp" %}
+
     {% else %}
         <p><a class='like-btn' href="{% url 'login' %}"> {{ post.likes.count }} Like{{ post.likes.count|pluralize }}</a></p>
     {% endif %}
