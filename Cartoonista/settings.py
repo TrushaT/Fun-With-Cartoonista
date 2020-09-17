@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'post',
     'taggit',
     'rest_framework',
+    'django_social_share',
 ]
 
 SITE_ID = 1

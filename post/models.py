@@ -24,5 +24,7 @@ class Post(models.Model):
     def get_api_like_url(self):
         return reverse('like-api-toggle', kwargs={"pk":self.id})
 
+   
+
  
     

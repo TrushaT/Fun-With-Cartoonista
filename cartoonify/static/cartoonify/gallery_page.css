@@ -1,0 +1,47 @@
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+    margin: 4px;
+    position: relative;
+}
+
+.textWithBlurredBg {
+    
+    display: inline-block;
+    transition: .3s;
+
+}
+
+.textWithBlurredBg img{
+    transition: .3s;
+}
+.textWithBlurredBg:hover img{
+    filter: blur(2px) brightness(60%);
+    box-shadow: 0 0 16px cyan ;
+
+
+}
+
+.textWithBlurredBg a {
+    position: absolute;
+    z-index: 1;
+    left:35%;
+    top : 30%;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.3s;
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: white;
+    margin: 0 auto;
+    padding: 0.5rem;
+    font-weight: bold;
+    font-size: smaller;
+    text-transform: uppercase;
+}
+
+
+.textWithBlurredBg:hover :not( img ){
+    opacity: 1;
+}
