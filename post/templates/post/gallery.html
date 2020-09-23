@@ -76,8 +76,7 @@
     <section class="section" id="features" style="position: relative; margin-top: 2rem;">
         <div class="row text-center">
             {% comment %} <div class="col-md-12 col-xs-8 col-sm-10"> {% endcomment %}
-            <div class="col-md-2">
-            </div>
+            <div class="col-md-2"></div>
             <div class="col-md-8">
                 {% if messages %} {% for message in messages %}
                 <div class="alert alert-{{ message.tags }}"> {{ message }}</div>
@@ -102,28 +101,24 @@
                 <br>
                 <p class="h4">Popular Tags: {% for tag in common_tags %}<a class='btn btn-info' href="{% url 'per-category' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %} {% endif %}{% endfor %}</p> 
                 <br> 
-                </div>
-                </div>
-
-                <main>
-                 <section id="gallery">
-                    <div class="container">
-                            <div class="row">
-                                {% for post in posts %}<!-- Use for loop here -->
-                                    <div class="col-lg-4 mb-4">
-                                        <div class="card">
-                                            <div class="textWithBlurredBg">
+            </div>
+        </div>
+        <main>
+            <section id="gallery">
+                <div class="container">
+                        <div class="row">
+                            {% for post in posts %}<!-- Use for loop here -->
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card">
+                                        <div class="textWithBlurredBg">
                                                 <img src="{{ post.header_image.url }}" class="card-img-top">
                                                  <a href="{% url 'detail_post' post.id %}" > More info </a> 
-                                            </div>
-                                            
-                                            <div class="card-body">
+                                        </div>
+                                        <div class="card-body">
                                                     <h5 class="card-title" style = "color:black">{{ post.title }} by <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a></h5>
                                                     {% comment %} <p>Likes : {{ post.likes.count }} </p> {% endcomment %}
                                                     <i class="fa fa-heart" style="font-size:27px;color:red;"> <b style = "color:black">{{ post.likes.count }} </b></i>&nbsp &nbsp &nbsp &nbsp
                                                     <a href="{{ post.header_image.url }}" class="btn btn-outline-success btn-sm" download>  Download</a>
-
-
                                                     <br>
                                                     <br>
                                                     <h4>
@@ -134,17 +129,14 @@
                                                     </a>
                                                     {% if not forloop.last %} {% endif %}{% endfor %}
                                                     </h4>
-
-                            
-                                            </div>
                                         </div>
                                     </div>
-                                {% endfor %}
-                            </div>
+                                </div>
+                            {% endfor %}
                         </div>
-                        
-                    </section>
-                </main>
+                </div>
+            </section>
+        </main>
                             
 
 

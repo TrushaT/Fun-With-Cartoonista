@@ -2,8 +2,8 @@
     width: 100%;
     height: 15vw;
     object-fit: cover;
-    margin: 4px;
-    position: relative;
+    /* margin: 4px;
+    position: relative; */
 }
 
 .textWithBlurredBg {
@@ -18,7 +18,7 @@
 }
 .textWithBlurredBg:hover img{
     filter: blur(2px) brightness(60%);
-    box-shadow: 0 0 16px cyan ;
+    box-shadow: 0 0 16px blue ;
 
 
 }
