@@ -72,10 +72,18 @@ class UserPostListView(ListView):
     model = Post
     template_name = 'post/user_posts_feed.html' 
     context_object_name = 'posts'
-
+    
     def get_queryset(self):
         user = get_object_or_404(User,username=self.kwargs.get('username')) 
         return Post.objects.filter(author=user).order_by('-pub_date')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(UserPostListView, self).get_context_data()
+        user = get_object_or_404(User,username=self.kwargs.get('username'))
+        context['user_name'] = user.username
+        context['user_bio'] = user.profile.bio
+        context['profile_image'] = user.profile.image.url
+        return context 
 
 class AddPostView(LoginRequiredMixin, CreateView):
     model = Post

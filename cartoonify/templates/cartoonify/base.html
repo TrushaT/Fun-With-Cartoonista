@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- Additional CSS Files -->
+      {% block head_css_site %}
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -19,6 +21,18 @@
     <link rel="stylesheet" href="{% static 'cartoonify/main.css' %}">
 
     <link rel="stylesheet" href="{% static 'cartoonify/tagsinput.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'cartoonify/fontawesome.css' %}">
+    
+    {% endblock head_css_site %}
+
+        
+    {% comment %} <link rel="stylesheet" href="{% static 'cartoonify/feed_page.css' %}"> {% endcomment %}
+        
+    {% comment %} <link rel="stylesheet" href="{% static 'cartoonify/owl.css' %}"> {% endcomment %}
+        
+    <link rel="stylesheet" href="{% static 'cartoonify/lightbox.css' %}">
+
 
     {% if title %}
     <title> Fun With Cartoonista - {{title}}</title>
@@ -91,6 +105,7 @@
                 {% if messages %} {% for message in messages %}
                 <div class="alert alert-{{ message.tags }}"> {{ message }}</div>
                 {% endfor %} {% endif %} {% block content %}{% endblock content %}
+
             </div>
             <div class="col-2">
             </div>
@@ -133,6 +148,8 @@
     <script src="{% static 'cartoonify/slick.js' %}"></script>
     <script src="{% static 'cartoonify/lightbox.js' %}"></script>
     <script src="{% static 'cartoonify/isotope.js' %}"></script>
+    <script src="{% static 'cartoonify/isotope.min.js' %}"></script>
+    <script src="{% static 'cartoonify/custom.js' %}"></script>
 
     <!-- Global Init -->
     <script src="{% static 'cartoonify/base.js' %}"></script>
