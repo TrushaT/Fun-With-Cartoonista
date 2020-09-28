@@ -20,7 +20,7 @@
         {% else %}
             <p><a class='like-btn' data-href="{{ post.get_api_like_url }}" data-likes="{{ post.likes.count }}" href=""> {{ post.likes.count }} Like</a></p>
         {% endif %}
-         <button class="btn btn-outline-primary mr-5"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
+         <a href="{{ post.header_image.url }}" class="btn btn-outline-success btn-sm" download>  Download</a>
         {% post_to_facebook object_or_url  'Post to fb!' %}
         {% send_email post.title "Interesting Photo: {{post.title}}. Check it out!" object_or_url "Share via email" %}
         {% post_to_whatsapp object_or_url "Share ur whatsapp" %}

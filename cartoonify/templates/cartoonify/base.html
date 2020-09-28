@@ -51,7 +51,11 @@
                                 <li><a href="{% url 'profile' %}">My Profile</a></li>
                                 {% endif %}
 
-                                <li><a href="{% url 'user-posts' user.username %} class="active"">My Posts Feed</a></li>
+                                {% if 'user' in request.path %}
+                                <li><a href="{% url 'user-posts' user.username %}" class="active">My Posts Feed</a></li>
+                                {% else %}
+                                <li><a href="{% url 'user-posts' user.username %}">My Posts Feed</a></li>
+                                {% endif %}
 
                                 <li><a href="{% url 'logout' %}">Logout {{ user.username }}</a></li>
                             {% else %}
@@ -79,12 +83,16 @@
     </header>
     <!-- ***** Header Area End ***** -->
 
-    <section class="section" id="features" style="position: relative; margin-top: 7rem;">
+    <section class="section" id="features" style="position: relative; margin-top: 2rem;">
         <div class="row">
-            <div class="col-md-10 col-xs-8 col-sm-10">
+            <div class="col-2">
+            </div>
+            <div class="col-8">
                 {% if messages %} {% for message in messages %}
                 <div class="alert alert-{{ message.tags }}"> {{ message }}</div>
                 {% endfor %} {% endif %} {% block content %}{% endblock content %}
+            </div>
+            <div class="col-2">
             </div>
         </div>
     </section>

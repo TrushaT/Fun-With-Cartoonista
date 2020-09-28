@@ -57,7 +57,7 @@
                             {% if user.is_authenticated %}
                             <li><a href="{% url 'gallery' %}">Gallery</a></li>
                             <li><a href="{% url 'profile' %}">My Profile</a></li>
-                            <li><a href="{% url 'user-posts' user.username %}">My Posts Feed</a></li>
+                            <li><a href="{% url 'user-posts' user.username%}">My Posts Feed</a></li>
                             <li><a href="{% url 'logout' %}">Logout {{ user.username }}</a></li>
                             {% else %}
                             <li class="scroll-to-section"><a href="#features">Features</a></li>
@@ -158,16 +158,16 @@
             </div>
             <div class="row">
                 <div class="col-md-6 text-center">
-                    <img src="{% static 'images/img 3.jpg' %}">
+                    <img src="{% static 'images/img 3.jpg' %}" class="img-fluid">
                 </div>
                 <div class="col-md-6 text-center">
-                    <img src="{% static 'images/img 3.jpg_result.png' %}">
+                    <img src="{% static 'images/img 3.jpg_result.png' %}" >
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ***** Projects Area Starts ***** -->
+    <!-- ***** Projects/Picks Area Starts ***** -->
     <section class="section" id="projects">
         <div class="container">
             <div class="row">
@@ -191,47 +191,47 @@
                         <div class="row grid">
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all por">
                                 <div class="item">
-                                    <a href="{% static 'images/member-item-05.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/member-item-05.jpg_result.png' %}" alt=""></a>
+                                    <a href="{% static 'images/member-item-05.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Picks"><img src="{% static 'images/member-item-05.jpg_result.png' %}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all por">
                                 <div class="item">
-                                    <a href="{% static 'images/member-item-01.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/member-item-01.jpg_result.png' %}" alt=""></a>
+                                    <a href="{% static 'images/member-item-01.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Picks"><img src="{% static 'images/member-item-01.jpg_result.png' %}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all lov">
                                 <div class="item">
-                                    <a href="{% static 'images/Couple1.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/Couple1.jpg_result.png' %}" alt=""></a>
+                                    <a href="{% static 'images/Couple1.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Picks"><img src="{% static 'images/Couple1.jpg_result.png' %}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all por">
                                 <div class="item">
-                                    <a href="{% static 'images/member-item-04.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/member-item-04.jpg_result.png' %}" alt=""></a>
+                                    <a href="{% static 'images/member-item-04.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Picks"><img src="{% static 'images/member-item-04.jpg_result.png' %}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all lov">
                                 <div class="item">
-                                    <a href="{% static 'images/Couple2.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/Couple2.jpg_result.png' %}" alt=""></a>
+                                    <a href="{% static 'images/Couple2.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Picks"><img src="{% static 'images/Couple2.jpg_result.png' %}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all grp">
                                 <div class="item">
-                                    <a href="{% static 'images/GroupPic1.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/GroupPic1.jpg_result.png' %}" alt=""></a>
+                                    <a href="{% static 'images/GroupPic1.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Picks"><img src="{% static 'images/GroupPic1.jpg_result.png' %}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all grp">
                                 <div class="item">
-                                    <a href="{% static 'images/GroupPic2.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/GroupPic2.jpg_result.png' %}" alt=""></a>
+                                    <a href="{% static 'images/GroupPic2.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Picks"><img src="{% static 'images/GroupPic2.jpg_result.png' %}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all ani">
                                 <div class="item">
-                                    <a href="{% static 'images/dog.jpeg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'images/dog.jpeg_result.png' %}" alt=""></a>
+                                    <a href="{% static 'images/dog.jpeg_result.png' %}" data-lightbox="image-1" data-title="Our Picks"><img src="{% static 'images/dog.jpeg_result.png' %}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all lov">
                                 <div class="item">
-                                    <a href="{% static 'images/couples-posing-800x450.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Projects"><img src="{% static 'couples-posing-800x450.jpg_result.png' %}" alt=""></a>
+                                    <a href="{% static 'images/couples-posing-800x450.jpg_result.png' %}" data-lightbox="image-1" data-title="Our Picks"><img src="{% static 'couples-posing-800x450.jpg_result.png' %}" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -256,14 +256,13 @@
                     <div class="owl-carousel owl-theme">
                         <div class="item author-item">
                             <div class="member-thumb">
-                                <img src="{% static 'images/AkshatBhat.jpg' %}" alt="">
+                                <img src="{% static 'images/AkshatBhat.jpg' %}" alt="" >
                                 <div class="hover-effect">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                            <li><a href="https://github.com/AkshatBhat/"><i class="fa fa-github"></i></a></li>
+                                            <li><a href="https://twitter.com/AkshatBhat04"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/in/akshat-bhat-536472199/"><i class="fa fa-linkedin"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -283,10 +282,9 @@
                                 <div class="hover-effect">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                            <li><a href="https://github.com/TrushaT/"><i class="fa fa-github"></i></a></li>
+                                            <li><a href="https://twitter.com/TalatiTrusha/"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/in/trusha-talati-705747186/"><i class="fa fa-linkedin"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
