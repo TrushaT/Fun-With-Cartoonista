@@ -16,13 +16,17 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
     <link rel="stylesheet" href="{% static 'cartoonify/base.css' %}">
 
     <link rel="stylesheet" href="{% static 'cartoonify/main.css' %}">
 
     <link rel="stylesheet" href="{% static 'cartoonify/tagsinput.css' %}" type="text/css">
 
-    <link rel="stylesheet" href="{% static 'cartoonify/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'cartoonify/font-awesome.css' %}">
+
     
     {% endblock head_css_site %}
 
@@ -161,16 +165,19 @@
                 btn.text(newCount + " " + verb)
             }
             $(".like-btn ").click(function(e) {
+                console.log("inside like");
                 e.preventDefault()
                 var this_ = $(this)
-                var likeUrl = this_.attr("data-href ")
+                var likeUrl = this_.attr("data-href")
+                console.log(likeUrl)
                 if (likeUrl) {
                     $.ajax({
                         url: likeUrl,
-                        method: "GET ",
+                        method: "GET",
                         data: {},
                         success: function(data) {
-                            console.log(data)
+                            console.log("sucess");
+                            console.log(data);
                             var newLikes;
                             if (data.liked) {
                                 //add one like
