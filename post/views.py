@@ -54,7 +54,7 @@ class PostListView(ListView):
 
 class CategoryPostListView(ListView):
     model = Post
-    template_name = 'post/categories.html'
+    template_name = 'post/category.html'
     context_object_name = 'posts'
 
     def get_queryset(self, **kwargs):
