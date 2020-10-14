@@ -52,13 +52,14 @@
                                                         <i class="fa fa-heart" style="font-size:27px;color:red;"> <b style = "color:black">{{ post.likes.count }} </b></i>&nbsp &nbsp &nbsp &nbsp
                                                         <a href="{{ post.header_image.url }}" class="btn btn-outline-success btn-sm" download>  Download</a><br>
                                                         <br>
-                                                        <h4>
+                                                        <h6>
                                                             Tags:{% for tag in post.tags.all %}
+                                                            
                                                             <a href="{% url 'per-category' tag %}">
                                                                 <span class="badge badge-pill badge-info">{{ tag.name }}</span>
                                                             </a>
                                                             {% if not forloop.last %} {% endif %}{% endfor %}
-                                                        </h4>
+                                                        </h6>
                                                 </div>
                                         </div>
                                     </div>
