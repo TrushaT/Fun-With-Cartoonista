@@ -110,7 +110,7 @@ class AddPostView(LoginRequiredMixin, CreateView):
 
 class PostDetailView(DetailView):
     model = Post 
-    template_name = 'post/post_detail.html'
+    template_name = 'post/detail_post.html'
 
     def get_context_data(self , *args, **kwargs):
         stuff = get_object_or_404(Post, id=self.kwargs['pk'])
