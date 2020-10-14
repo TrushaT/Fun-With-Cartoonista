@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
 from django.urls import reverse
+from PIL import Image
 
 class Post(models.Model):
     title = models.CharField(max_length = 250)
@@ -23,6 +24,14 @@ class Post(models.Model):
     
     def get_api_like_url(self):
         return reverse('like-api-toggle', kwargs={"pk":self.id})
+
+    def save(self,**kwargs):
+        super().save()
+        img = Image.open(self.header_image.path)
+        if img.height > 500 or img.width > 500 :
+            output_size = (500,500)
+            img.thumbnail(output_size)
+            img.save(self.header_image.path)
 
    
 

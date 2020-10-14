@@ -120,6 +120,7 @@ body {
     -ms-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    max-width: 100%;
     overflow-x: hidden;
 }
 
