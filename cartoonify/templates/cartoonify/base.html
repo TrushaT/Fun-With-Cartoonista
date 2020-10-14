@@ -64,9 +64,9 @@
                             <li><a href="{% url 'gallery' %}">Gallery</a></li>
                             {% if user.is_authenticated %}
                                 {% if request.path == '/edit-profile/' %}
-                                <li><a href="{% url 'profile' %}" class="active">My Profile</a></li>
+                                <li><a href="{% url 'profile' %}" class="active">Edit Profile</a></li>
                                 {% else %}
-                                <li><a href="{% url 'profile' %}">My Profile</a></li>
+                                <li><a href="{% url 'profile' %}">Edit Profile</a></li>
                                 {% endif %}
 
                                 {% if 'user' in request.path %}
@@ -162,9 +162,9 @@
     <script>
         $(document).ready(function() {
             function updateText(btn, newCount, verb) {
-                btn.text(newCount + " " + verb)
+                $('#pTest').text(newCount)
             }
-            $(".like-btn ").click(function(e) {
+            $(".like-btn").click(function(e) {
                 console.log("inside like");
                 e.preventDefault()
                 var this_ = $(this)
@@ -182,14 +182,17 @@
                             if (data.liked) {
                                 //add one like
                                 updateText(this_, data.count, data.verb)
+                                $("#hid").removeClass("fa-heart-o").addClass("fa-heart");
                             } else {
                                 //remove one like
+                                $("#hid").removeClass("fa-heart").addClass("fa-heart-o");;
                                 updateText(this_, data.count, data.verb)
                             }
                         },
                         error: function(error) {
                             console.log(error)
-                            console.log("error occured ")
+                            console.log("error occured")
+                            alert("Error Occured")
                         }
                     })
                 }
