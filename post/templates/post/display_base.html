@@ -81,6 +81,12 @@
                 {% if messages %} {% for message in messages %}
                 <div class="alert alert-{{ message.tags }}"> {{ message }}</div>
                 {% endfor %} {% endif %} 
+                {% comment %} <div class="main-container">
+                    <nav class="main-nav">
+                        <div id="logo" class="left"><a href="#">Flip Turn</a></div>
+                    </nav>
+                    <div class="content-container"></div>
+                </div> {% endcomment %}
                 <form class="card card-sm mt-2" id="search" method="POST" action="{% url 'search' %}">
                         {% csrf_token %}
                         <div class="card-text row align-items-center">
@@ -99,11 +105,12 @@
                         </div>
                 </form>
                 <br>
-                <br> 
             </div>
         </div>
+        
         {% if posts %}
-        <h1 class="mt-3 mb-3 text-center">Search Results for "{{ txtSearch }}"</h1>
+        {% block content %}
+        {% endblock content %}
         <main>
             <section id="gallery">
                 <div class="container">
@@ -135,49 +142,50 @@
                                 </div>
                             {% endfor %}
                         </div>
+
                         <div class="row">
                             <div class="col-3">
                             </div>
                             <div class="col-6 text-center">
-                                {% if posts.has_other_pages %}
+                                {% if is_paginated %}
                                 <div class="text-center">
                                 <ul class="pagination" style="">
-                                    {% if posts.has_previous %}
+                                    {% if page_obj.has_previous %}
                                         <li class="page-item">
                                         <a class="page-link" href="?page=1" tabindex="-1">First</a>
                                         </li>
                                         <li class="page-item">
-                                        <a class="page-link" href="?page={{ posts.previous_page_number }}"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a>
+                                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
                                         </li>
                                         {% comment %} <a class="btn btn-outline-info mb-4 " href="?page=1">First</a> {% endcomment %}
                                         {% comment %} <a class="btn btn-outline-info mb-4 " href="?page={{ page_obj.previous_page_number }}">Previous</a> {% endcomment %}
                                     {% endif %}
 
-                                    {% for num in posts.paginator.page_range %}
-                                        {% if posts.number == num %}
+                                    {% for num in page_obj.paginator.page_range %}
+                                        {% if page_obj.number == num %}
                                             <li class="page-item active">
                                             <a class="page-link" href="?page={{ num }}">{{ num }} <span class="sr-only">(current)</span></a>
                                             </li>
                                             {% comment %} <a class="btn btn-info mb-4 " href="?page={{ num }}">{{ num }}</a> {% endcomment %}
-                                        {% elif  num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+                                        {% elif  num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
                                             <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
                                             {% comment %} <a class="btn btn-outline-info mb-4 " href="?page={{ num }}">{{ num }}</a> {% endcomment %}
                                         {% endif %}
                                     {% endfor %}
 
-                                    {% if posts.has_next %}
+                                    {% if page_obj.has_next %}
                                         <li class="page-item">
-                                        <a class="page-link" href="?page={{ posts.next_page_number }}"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a>
+                                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
                                         </li>
                                         <li class="page-item">
-                                        <a class="page-link" href="?page={{ posts.paginator.num_pages }}">Last</a>
+                                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
                                         </li>
                                         {% comment %} <a class="btn btn-outline-info mb-4 " href="?page={{ page_obj.next_page_number }}">Next</a>
                                         <a class="btn btn-outline-info mb-4 " href="?page={{ page_obj.paginator.num_pages }}">Last</a> {% endcomment %}
                                     {% endif %}
                                 </ul>
                                 </div>
-                                {% endif %}
+                        {% endif %}
                             </div>
                             <div class="col-3">
                             </div>

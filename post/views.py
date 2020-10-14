@@ -15,6 +15,7 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 import json
 from django.http.response import JsonResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def search(request):
     if request.method == 'POST':
@@ -26,7 +27,7 @@ def search(request):
                 'posts': qs,
                 'txtSearch': txtSearch,
                 'title': f"'{txtSearch}' Results"
-                }        
+                }      
             return render(request,'post/search.html',context)
     return HttpResponseRedirect('/gallery')
 
@@ -44,6 +45,7 @@ class PostListView(ListView):
     template_name = 'post/gallery.html' # <app>/<model>_<viewtype>.html is the naming convention, here we modified it !
     context_object_name = 'posts'
     ordering = ['-pub_date']
+    paginate_by = 6
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
@@ -56,6 +58,8 @@ class CategoryPostListView(ListView):
     model = Post
     template_name = 'post/category.html'
     context_object_name = 'posts'
+    ordering = ['-pub_date']
+    paginate_by = 6
 
     def get_queryset(self, **kwargs):
         category = get_object_or_404(Tag,slug=self.kwargs.get('slug'))
@@ -72,6 +76,8 @@ class UserPostListView(ListView):
     model = Post
     template_name = 'post/user_posts_feed.html' 
     context_object_name = 'posts'
+    ordering = ['-pub_date']
+    paginate_by = 6
     
     def get_queryset(self):
         user = get_object_or_404(User,username=self.kwargs.get('username')) 
@@ -110,7 +116,7 @@ class AddPostView(LoginRequiredMixin, CreateView):
 
 class PostDetailView(DetailView):
     model = Post 
-    template_name = 'post/detail_post.html'
+    template_name = 'post/post_detail.html'
 
     def get_context_data(self , *args, **kwargs):
         stuff = get_object_or_404(Post, id=self.kwargs['pk'])
