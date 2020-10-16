@@ -13,7 +13,7 @@ SECRET_KEY = os.environ.get('CARTOONISTA_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'taggit',
     'rest_framework',
     'django_social_share',
+    'storages',
 ]
 
 SITE_ID = 1
@@ -155,6 +156,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'hellofromcartoonista@gmail.com'
-EMAIL_HOST_PASSWORD = 'ylgklbdqvwkatnfe'
+EMAIL_HOST_USER = os.environ.get('CARTOONISTA_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('CARTOONISTA_EMAIL_HOST_PASSWORD')
 
+AWS_ACCESS_KEY_ID = os.environ.get('CARTOONISTA_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('CARTOONISTA_AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('CARTOONISTA_AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION_NAME = 'us-east-2'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEBUG_PROPAGATE_EXCEPTIONS = True

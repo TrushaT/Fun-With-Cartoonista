@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import cv2
 from django.shortcuts import render,get_object_or_404
 from django.core.files.storage import FileSystemStorage
+from django.core.files.storage import default_storage
 
 def index(request):
     return render(request,'cartoonify/index.html')

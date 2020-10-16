@@ -107,7 +107,8 @@ class AddPostView(LoginRequiredMixin, CreateView):
         newpost = form.save(commit=False)
         newpost.slug = slugify(newpost.title)
         newpost.author = self.request.user
-        newpost.header_image = self.request.session['result_img_url']
+        url_ = self.request.session['result_img_url']
+        
         newpost.save()
         # Without this next line the tags won't be saved.
         form.save_m2m()
