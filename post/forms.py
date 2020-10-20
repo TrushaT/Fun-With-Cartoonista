@@ -11,7 +11,6 @@ class PostForm(forms.ModelForm):
             'caption': forms.Textarea(attrs={'class': 'form-control'}),
             'tags': forms.TextInput(attrs={'class': 'form-control','data-role': 'tagsinput'}),
             
-            
         }
 
 class SearchForm(forms.Form):
