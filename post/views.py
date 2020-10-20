@@ -16,6 +16,8 @@ from django.contrib.auth.models import User
 import json
 from django.http.response import JsonResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.files.uploadedfile import SimpleUploadedFile
+from cartoonify.models import Image
 
 def search(request):
     if request.method == 'POST':
@@ -95,11 +97,10 @@ class AddPostView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
     template_name = 'post/add_post1.html'
-    #fields = ('title','caption')
     def get_context_data(self, *args, **kwargs):
         context = super(AddPostView, self).get_context_data()
         url = self.request.session['result_img_url']
-        context['image_url'] = f'/media/{ url }'
+        context['image_url'] = url
         return context
     
     def form_valid(self, form):
@@ -107,8 +108,8 @@ class AddPostView(LoginRequiredMixin, CreateView):
         newpost = form.save(commit=False)
         newpost.slug = slugify(newpost.title)
         newpost.author = self.request.user
-        url_ = self.request.session['result_img_url']
-        
+        newpost.header_image = self.request.session['result_img_name']
+
         newpost.save()
         # Without this next line the tags won't be saved.
         form.save_m2m()

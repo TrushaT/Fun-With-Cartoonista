@@ -1,12 +1,19 @@
-{% extends 'cartoonify/base.html' %} {% block content %}
+{% extends 'cartoonify/base.html' %}
+{% load crispy_forms_tags %}
 
-{% if result_img_url %}
+{% block content %}
+
+{% if result_image_url %}
 <article class="media content-section mt-3">
     <div class="media-body">
         <h2 style="margin-bottom: 1rem;">Select another image to cartoonify! </h2>
-        <form method="post" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="file" name="image">
+            <fieldset class="form-group">
+
+            {{ form|crispy }}
+
+            </fieldset>
             <button type="submit" class="btn btn-outline-dark">Upload Image</button>
         </form>
     </div>
@@ -22,17 +29,17 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <img src="{{original_img_url}}" style="width:100%">
+            <img src="{{ original_image_url }}" style="width:100%">
         </div>
         <div class="col-md-6">
-            <img src="{{result_img_url}}" style="width:100%">
+            <img src="{{ result_image_url }}" style="width:100%">
         </div>
     </div>
 </div>
 <br>
 <br>
-<div class="container">
-    <a href="{{result_img_url}}" download>
+<div class="container text-center " >
+    <a href="{{result_image_url}}" download>
         <button class="btn btn-outline-primary mr-5"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
     </a>
     <a href="{% url 'add_post' %}" class="btn btn-outline-dark">Post</a>
@@ -44,7 +51,11 @@
         <h2 class="mb-3">Select an image to cartoonify! </h2>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="file" name="image">
+             <fieldset class="form-group">
+
+            {{ form|crispy }}
+
+            </fieldset>
             <button type="submit" class="btn btn-outline-dark">Upload Image</button>
         </form>
     </div>

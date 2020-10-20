@@ -44,7 +44,7 @@
                     {% else %}
                     <i class="fa fa-heart-o fa-lg" style="color: red" aria-hidden="true" id="hid"></i><a class='ml-2 h6' style="color: red" href="{% url 'login' %}"> {{ post.likes.count }}</a>
                     {% endif %}
-                        <a href="{{ post.header_image.url }}" download>
+                        <a href="{{ post.header_image }}" download>
                             <h6 class="ml-3"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> Download</h6>
                         </a>
                     </div>
