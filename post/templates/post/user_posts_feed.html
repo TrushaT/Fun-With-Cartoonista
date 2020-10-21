@@ -11,71 +11,65 @@
 
 
 {% block content %}
-{% if posts %}
-
-{% comment %} <div class="container"> {% endcomment %}
-  {% comment %} <main> {% endcomment %}
-  
 <div class = "header_feed">
-  </div>
+</div>
 
-    <div class="col text-center">
-        {% comment %} <div class="left col-lg-4"> {% endcomment %}
-            <div class="photo-left">
-            <img class="photo" src="{{ profile_image }}"/>
-            <div class="active"></div>
-            </div>
-            
-            <div class="section-heading">
-                <h2>{{ user_name }}</h2>
-                <div class="line-dec"></div>
-            </div>
-            
-            <p class="desc">{{ user_bio}}</p>
-            </div>
-    <div>
-       <div class="col-md-12"> 
-            <main>
-                <section id="gallery" style="padding: 20px 0">
-                    <div class="container">
-                            <div class="row text-center">
-                                {% for post in posts %}<!-- Use for loop here -->
-                                    <div class="col-md-4 mb-4">
-                                        <div class="card">
-                                                <div class="textWithBlurredBg">
-                                                    <img src="{{ post.header_image.url }}" class="card-img-top">
-                                                    <a href="{% url 'detail_post' post.id %}" > More info </a> 
-                                                </div>
-                                                <div class="card-body">
-                                                        <h5 class="card-title" style = "color:black">{{ post.title }} by <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a></h5>
-                                                        {% comment %} <p>Likes : {{ post.likes.count }} </p> {% endcomment %}
-                                                        <i class="fa fa-heart" style="font-size:27px;color:red;"> <b style = "color:black">{{ post.likes.count }} </b></i>&nbsp &nbsp &nbsp &nbsp
-                                                        <a href="{{ post.header_image.url }}" class="btn btn-outline-success btn-sm" download>  Download</a><br>
-                                                        <br>
-                                                        <h6>
-                                                            Tags:{% for tag in post.tags.all %}
-                                                            
-                                                            <a href="{% url 'per-category' tag %}">
-                                                                <span class="badge badge-pill badge-info">{{ tag.name }}</span>
-                                                            </a>
-                                                            {% if not forloop.last %} {% endif %}{% endfor %}
-                                                        </h6>
-                                                </div>
-                                        </div>
+<div class="col text-center">
+        <div class="photo-left">
+        <img class="photo" src="{{ profile_image }}"/>
+        <div class="active"></div>
+        </div>
+        
+        <div class="section-heading">
+            <h2>{{ user_name }}</h2>
+            <div class="line-dec"></div>
+        </div>
+        
+        <p class="desc">{{ user_bio}}</p>
+        </div>
+<div>
+
+{% if posts %}
+    <div class="col-md-12"> 
+        <main>
+            <section id="gallery" style="padding: 20px 0">
+                <div class="container">
+                        <div class="row text-center">
+                            {% for post in posts %}<!-- Use for loop here -->
+                                <div class="col-md-4 mb-4">
+                                    <div class="card">
+                                            <div class="textWithBlurredBg">
+                                                <img src="{{ post.header_image.url }}" class="card-img-top">
+                                                <a href="{% url 'detail_post' post.id %}" > More info </a> 
+                                            </div>
+                                            <div class="card-body">
+                                                    <h5 class="card-title" style = "color:black">{{ post.title }} by <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a></h5>
+                                                    <i class="fa fa-heart" style="font-size:27px;color:red;"> <b style = "color:black">{{ post.likes.count }} </b></i>&nbsp &nbsp &nbsp &nbsp
+                                                    <a href="{{ post.header_image.url }}" class="btn btn-outline-success btn-sm" download>  Download</a><br>
+                                                    <br>
+                                                    <h6>
+                                                        Tags:{% for tag in post.tags.all %}
+                                                        
+                                                        <a href="{% url 'per-category' tag %}">
+                                                            <span class="badge badge-pill badge-info">{{ tag.name }}</span>
+                                                        </a>
+                                                        {% if not forloop.last %} {% endif %}{% endfor %}
+                                                    </h6>
+                                            </div>
                                     </div>
-                                {% endfor %}
                                 </div>
-
+                            {% endfor %}
                             </div>
-                        </div>
-                        
-                    </section>
-                </main>
 
-            </div>
-        </div> 
-  
- 
+                        </div>
+                    </div>
+                    
+                </section>
+            </main>
+
+        </div>
+    </div> 
+
 {% else %}
-<h1>Sorry no images available</h1>
+<h1 class="text-center">Sorry no images available</h1>
 {% endif %} {% endblock content%}

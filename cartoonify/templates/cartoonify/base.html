@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- Additional CSS Files -->
-      {% block head_css_site %}
+    {% block head_css_site %}
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
@@ -29,12 +29,7 @@
 
     
     {% endblock head_css_site %}
-
-        
-    {% comment %} <link rel="stylesheet" href="{% static 'cartoonify/feed_page.css' %}"> {% endcomment %}
-        
-    {% comment %} <link rel="stylesheet" href="{% static 'cartoonify/owl.css' %}"> {% endcomment %}
-        
+    
     <link rel="stylesheet" href="{% static 'cartoonify/lightbox.css' %}">
 
 
@@ -61,6 +56,11 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="{% url 'index' %}">Home</a></li>
+                            {% if request.path == '/upload/' %}
+                            <li><a href="{% url 'upload' %}" class="active">Cartoonify!</a></li>
+                            {% else %}
+                            <li><a href="{% url 'upload' %}">Cartoonify!</a></li>
+                            {% endif %}
                             <li><a href="{% url 'gallery' %}">Gallery</a></li>
                             {% if user.is_authenticated %}
                                 {% if request.path == '/edit-profile/' %}
@@ -103,15 +103,15 @@
 
     <section class="section" id="features" style="position: relative; margin-top: 5rem;">
         <div class="row">
-            <div class="col-2">
+            <div class="col-md-2">
             </div>
-            <div class="col-8">
+            <div class="col-md-8">
                 {% if messages %} {% for message in messages %}
                 <div class="alert alert-{{ message.tags }}"> {{ message }}</div>
                 {% endfor %} {% endif %} {% block content %}{% endblock content %}
 
             </div>
-            <div class="col-2">
+            <div class="col-md-2">
             </div>
         </div>
     </section>
@@ -120,8 +120,8 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6 col-xs-12">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 col-xs-12">
                     <div class="left-text-content text-center mb-3">
                         <p>Made with ❤</p>
                         <p>Happy Cartooning!</p>
@@ -135,7 +135,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3"></div>
+                <div class="col-md-3"></div>
             </div>
         </div>
     </footer>
@@ -165,19 +165,15 @@
                 $('#pTest').text(newCount)
             }
             $(".like-btn").click(function(e) {
-                console.log("inside like");
                 e.preventDefault()
                 var this_ = $(this)
                 var likeUrl = this_.attr("data-href")
-                console.log(likeUrl)
                 if (likeUrl) {
                     $.ajax({
                         url: likeUrl,
                         method: "GET",
                         data: {},
                         success: function(data) {
-                            console.log("sucess");
-                            console.log(data);
                             var newLikes;
                             if (data.liked) {
                                 //add one like
@@ -190,9 +186,7 @@
                             }
                         },
                         error: function(error) {
-                            console.log(error)
-                            console.log("error occured")
-                            alert("Error Occured")
+                            alert("Oops! Error Occurred");
                         }
                     })
                 }

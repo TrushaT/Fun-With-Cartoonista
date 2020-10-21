@@ -52,9 +52,14 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="{% url 'index' %}">Home</a></li>
+                            {% if request.path == '/upload/' %}
+                            <li><a href="{% url 'upload' %}" class="active">Cartoonify!</a></li>
+                            {% else %}
+                            <li><a href="{% url 'upload' %}">Cartoonify!</a></li>
+                            {% endif %}
                             <li><a href="{% url 'gallery' %}" class="active">Gallery</a></li>
                             {% if user.is_authenticated %}
-                            <li><a href="{% url 'profile' %}">My Profile</a></li>
+                            <li><a href="{% url 'profile' %}">Edit Profile</a></li>
                             <li><a href="{% url 'user-posts' user.username %}">My Posts Feed</a></li>
                             <li><a href="{% url 'logout' %}">Logout {{ user.username }}</a></li>
                             {% else %}
@@ -75,18 +80,11 @@
 
     <section class="section" id="features" style="position: relative; margin-top: 5rem;">
         <div class="row text-center">
-            {% comment %} <div class="col-md-12 col-xs-8 col-sm-10"> {% endcomment %}
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 {% if messages %} {% for message in messages %}
                 <div class="alert alert-{{ message.tags }}"> {{ message }}</div>
                 {% endfor %} {% endif %} 
-                {% comment %} <div class="main-container">
-                    <nav class="main-nav">
-                        <div id="logo" class="left"><a href="#">Flip Turn</a></div>
-                    </nav>
-                    <div class="content-container"></div>
-                </div> {% endcomment %}
                 <form class="card card-sm mt-2" id="search" method="POST" action="{% url 'search' %}">
                         {% csrf_token %}
                         <div class="card-text row align-items-center">
@@ -106,6 +104,7 @@
                 </form>
                 <br>
             </div>
+            <div class="col-md-2"></div>
         </div>
         
         {% if posts %}
@@ -123,9 +122,15 @@
                                                  <a href="{% url 'detail_post' post.id %}" > More info </a> 
                                         </div>
                                         <div class="card-body">
-                                                    <h5 class="card-title" style = "color:black">{{ post.title }} by <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a></h5>
-                                                    {% comment %} <p>Likes : {{ post.likes.count }} </p> {% endcomment %}
-                                                    <i class="fa fa-heart" style="font-size:27px;color:red;"> <b style = "color:black">{{ post.likes.count }} </b></i>&nbsp &nbsp &nbsp &nbsp
+                                                    <div class="row mb-1">
+                                                        <div class="col-auto">
+                                                            <h5 class="card-title" style = "color:black">{{ post.title }} </h5> 
+                                                        </div>
+                                                        <div class="col-auto mt-1">
+                                                            <h6> by <a href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a></h6>
+                                                        </div>
+                                                    </div>
+                                                    <i class="fa fa-heart mt-3" style="font-size:27px;color:red;"> <b style = "color:black">{{ post.likes.count }} </b></i>&nbsp &nbsp &nbsp &nbsp
                                                     <a href="{{ post.header_image.url }}" class="btn btn-outline-success btn-sm" download>  Download</a>
                                                     <br>
                                                     <br>
@@ -166,10 +171,8 @@
                                             <li class="page-item active">
                                             <a class="page-link" href="?page={{ num }}">{{ num }} <span class="sr-only">(current)</span></a>
                                             </li>
-                                            {% comment %} <a class="btn btn-info mb-4 " href="?page={{ num }}">{{ num }}</a> {% endcomment %}
                                         {% elif  num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
                                             <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
-                                            {% comment %} <a class="btn btn-outline-info mb-4 " href="?page={{ num }}">{{ num }}</a> {% endcomment %}
                                         {% endif %}
                                     {% endfor %}
 
@@ -180,8 +183,6 @@
                                         <li class="page-item">
                                         <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
                                         </li>
-                                        {% comment %} <a class="btn btn-outline-info mb-4 " href="?page={{ page_obj.next_page_number }}">Next</a>
-                                        <a class="btn btn-outline-info mb-4 " href="?page={{ page_obj.paginator.num_pages }}">Last</a> {% endcomment %}
                                     {% endif %}
                                 </ul>
                                 </div>
@@ -195,16 +196,8 @@
         </main>
 
         {% else %}
-    <h1>Sorry no images available </h1>
-    {% endif %}
-                            
-
-
-                   
-            </div>
-        </div>
-        <div class = "col-md-2">
-        </div>
+        <h1 class="text-center">Sorry no images available </h1>
+        {% endif %}
     </section>
 
     <!-- ***** Footer Start ***** -->
@@ -266,7 +259,6 @@
                         method: "GET ",
                         data: {},
                         success: function(data) {
-                            console.log(data)
                             var newLikes;
                             if (data.liked) {
                                 //add one like
@@ -277,8 +269,7 @@
                             }
                         },
                         error: function(error) {
-                            console.log(error)
-                            console.log("error occured ")
+                            alert("Oops! Error Occurred");
                         }
                     })
                 }

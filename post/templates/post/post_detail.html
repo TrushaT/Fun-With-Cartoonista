@@ -28,8 +28,8 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-7">
-                    <h3 class="mb-2" style="font-family: Roboto">{{ post.title }}</h3>
-                    <h6 style="font-family: Roboto">{{ post.caption }}</h6>
+                    <h3 class="mb-2" style="font-family: 'Arima Madurai', cursive;">{{ post.title }}</h3>
+                    <text style="font-family: 'Overlock', cursive;">{{ post.caption }}</text>
                 </div>
                 <div class="col-1">
                 </div>
@@ -45,23 +45,23 @@
                     <i class="fa fa-heart-o fa-lg" style="color: red" aria-hidden="true" id="hid"></i><a class='ml-2 h6' style="color: red" href="{% url 'login' %}"> {{ post.likes.count }}</a>
                     {% endif %}
                         <a href="{{ post.header_image }}" download>
-                            <h6 class="ml-3"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> Download</h6>
+                            <h6 class="ml-3 text-primary"><i class="fa fa-cloud-download fa-lg" style="color: #007bff" aria-hidden="true"></i> Download</h6>
                         </a>
                     </div>
-                    <div class="row mt-3 ml-5">
-                        <h6>
+                    <div class="row mt-3 mr-5">
+                        
                             <a class="mx-auto" data-toggle="modal" data-target="#exampleModal" style="cursor: pointer;">
-                                <i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share
+                                <h6 class="text-success"><i class="fa fa-share-alt fa-lg" style="color: #28a745" aria-hidden="true"></i> Share</h6>
                             </a>
-                        </h6>
+                        
                     </div>
 
                 </div>
             </div>
             {% if user == object.author %}
             <div class="mt-5 text-center">
-                <a class="mt-2 mr-3" href="{% url 'update_post' post.pk  %}">Edit</a>
-                <a class="mt-2 mr-3" href="{% url 'delete_post' post.pk  %}">Delete</a>
+                <a class="mt-2 mr-3 text-primary" href="{% url 'update_post' post.pk  %}">Edit</a>
+                <a class="mt-2 mr-3 text-danger" href="{% url 'delete_post' post.pk  %}">Delete</a>
             </div>
             {% else %} {% endif %}
         </div>
@@ -120,7 +120,7 @@
                     <div class="col-md-4 mb-4">
                         <div class="card" style="padding: 30px 30px 30px 30px;">
                             <div class="textWithBlurredBg">
-                                <img src="{{ post.header_image.url }}" class="card-img-top">
+                                <img src="{{ post.header_image.url }}" class="card-img-top" style="object-fit: contain">
                                 <a href="{% url 'detail_post' post.id %}"> More info </a>
                             </div>
                         </div>

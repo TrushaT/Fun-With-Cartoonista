@@ -7,8 +7,6 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 import base64
 from django.contrib.auth.models import User
 
-
-
 class Image(models.Model):
     date = models.DateField(auto_now_add=True)
     cartoonified_image = models.ImageField(upload_to='cartoonified_image')

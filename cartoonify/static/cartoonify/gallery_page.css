@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overlock:ital@1&display=swap');
 .card-img-top {
     width: 100%;
     height: 15vw;
     object-fit: cover;
-    /* margin: 4px;
-    position: relative; */
 }
 
 .textWithBlurredBg {
@@ -48,10 +48,6 @@ p {
 
 a {
     text-decoration: none;
-}
-
-* {
-    font-family: 'Open Sans', sans-serif;
 }
 
 h1 {

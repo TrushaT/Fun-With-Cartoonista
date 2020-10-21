@@ -1,34 +1,31 @@
- .card-container {
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overlock:ital@1&display=swap');
+.card-container {
     margin: 15px auto 0;
     position: relative;
     width: 700px;
-  }
-  
-  .card {
+}
+
+.card {
     background-color: #fff;
     padding: 30px;
     position: relative;
     box-shadow: 0 0 5px rgba(75, 75, 75, .07);
     z-index: 1;
-  }
+}
 
-  
-  
-  .card-body {
+.card-body {
     width: 100%;
-  }
-  
-  
-  
-  
-  .card-media {
+}
+
+.card-media {
     margin-left: 55px;
     height: 300px;
-    width : 500px; 
-    object-fit: cover;
-  }
-  
-  .card-shadow {
+    width: 500px;
+    object-fit: contain;
+}
+
+.card-shadow {
     background-color: #fff;
     box-shadow: 0 2px 25px 2px rgba(0, 0, 0, 1), 0 2px 50px 2px rgba(0, 0, 0, 1), 0 0 100px 3px rgba(0, 0, 0, .25);
     height: 1px;

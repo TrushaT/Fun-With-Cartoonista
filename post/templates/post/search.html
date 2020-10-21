@@ -101,6 +101,7 @@
                 <br>
                 <br> 
             </div>
+            <div class="col-md-2"></div>
         </div>
         {% if posts %}
         <h1 class="mt-3 mb-3 text-center">Search Results for "{{ txtSearch }}"</h1>
@@ -185,18 +186,9 @@
                 </div>
             </section>
         </main>
-
         {% else %}
-    <h1>Sorry no images available </h1>
-    {% endif %}
-                            
-
-
-                   
-            </div>
-        </div>
-        <div class = "col-md-2">
-        </div>
+        <h1 class="text-center">Sorry no images available </h1>
+        {% endif %}
     </section>
 
     <!-- ***** Footer Start ***** -->
@@ -258,7 +250,6 @@
                         method: "GET ",
                         data: {},
                         success: function(data) {
-                            console.log(data)
                             var newLikes;
                             if (data.liked) {
                                 //add one like
@@ -269,8 +260,7 @@
                             }
                         },
                         error: function(error) {
-                            console.log(error)
-                            console.log("error occured ")
+                            alert("Oops! Error Occurred");
                         }
                     })
                 }

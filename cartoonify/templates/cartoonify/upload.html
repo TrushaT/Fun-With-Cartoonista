@@ -1,6 +1,5 @@
 {% extends 'cartoonify/base.html' %}
 {% load crispy_forms_tags %}
-
 {% block content %}
 
 {% if result_image_url %}
@@ -36,9 +35,7 @@
         </div>
     </div>
 </div>
-<br>
-<br>
-<div class="container text-center " >
+<div class="container text-center mt-2" >
     <a href="{{result_image_url}}" download>
         <button class="btn btn-outline-primary mr-5"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
     </a>
