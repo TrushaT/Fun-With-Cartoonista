@@ -20,8 +20,9 @@ def upload(request):
             form.save(request)
             name_of_image = form.cleaned_data['original_image']
             original_image_name = f'original_image/{name_of_image}'
-        
-            images = Image.objects.filter(original_image=original_image_name).order_by('-date')
+            original_image_name = original_image_name[:original_image_name.index('.')]
+
+            images = Image.objects.filter(original_image__startswith=original_image_name).order_by('-date_time')
             image = images[0]
             original_image_url = image.original_image.url
             cartoonified_image_url = image.cartoonified_image.url

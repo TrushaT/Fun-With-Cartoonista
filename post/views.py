@@ -46,7 +46,7 @@ class PostListView(ListView):
     model = Post
     template_name = 'post/gallery.html' # <app>/<model>_<viewtype>.html is the naming convention, here we modified it !
     context_object_name = 'posts'
-    ordering = ['-pub_date']
+    ordering = ['-id']
     paginate_by = 6
 
     def get_context_data(self, **kwargs):
