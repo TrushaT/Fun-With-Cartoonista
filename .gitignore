@@ -1,6 +1,15 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 ### Django ###
 *.log
 *.pot
 *.pyc
-__pycache__/
 local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
