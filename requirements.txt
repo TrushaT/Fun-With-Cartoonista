@@ -2,7 +2,6 @@ numpy==1.18.0
 Django==2.2
 botocore==1.18.16
 boto3==1.15.16
-opencv-contrib-python==4.2.0.34
 opencv-python-headless==4.4.0.44
 opencv-contrib-python-headless==4.4.0.44
 django-storages==1.10.1
@@ -20,7 +19,6 @@ django-filter==2.2.0
 google-auth==1.11.2
 google-auth-oauthlib==0.4.1
 google-pasta==0.1.8
-opencv-python==4.2.0.34
 python-slugify==4.0.0
 chardet==3.0.4
 certifi==2018.8.24 
