@@ -1,5 +1,5 @@
-# Fun With Cartoonista!
-Convert your image into a cartoon with just a click!
+# Fun With Cartoonista! 
+A project started during the MLH Data Day Grind Hackathon!!
 
 ## Inspiration
 As we know data is all around us and is an integral part of our day-to-day lives. People nowadays are very active on social media and use it for various purposes such as better reach, entertainment, communication, social image and many more. The "socially-active" person loves to send and receive photographs of himself/herself and loves experimenting with them. He/She uses filters to modify the look and feel of the pictures! We have taken this opportunity to create a filter that converts a photograph of a person/animal/scenery etc. into a "cartoonized" version! 
