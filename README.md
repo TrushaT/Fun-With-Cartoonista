@@ -17,3 +17,8 @@ Both of us were beginners in Django and Computer Vision. It was very difficult t
 We created something fun and implemented a unique blend of computer vision and entertainment. We got to learn many new things during this journey.
 
 ## Video Demo (Submission for the MLH Data Day Grind Hackathon): https://youtu.be/YY3gP_EpOyc
+
+## Progress after the hackathon
+We didn't stop there! We continued working on this project and added all the functionalities we had aimed to integrate. We have now expanded our website by using AWS S3 services and deployed the website on Heroku. You can view your latest up-to-date website by checking out the following link. 
+
+## Latest Website Link: http://funwithcartoonista.herokuapp.com
