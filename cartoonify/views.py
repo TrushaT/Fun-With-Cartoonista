@@ -7,7 +7,11 @@ from .forms import ImageUploadForm
 from .models import Image
 import base64
 import cv2
-import numpy as np 
+import numpy as np
+import boto3
+import botocore
+import os
+
 
 def index(request):
     return render(request,'cartoonify/index.html')
@@ -35,7 +39,19 @@ def upload(request):
                     'original_image_url':original_image_url,
                     'result_image_url':cartoonified_image_url
                     }
-            
+
+            #updating meta-data for download 
+            s3 = boto3.resource(
+                service_name='s3',
+                region_name='us-east-2',
+                aws_access_key_id=os.environ.get('CARTOONISTA_AWS_ACCESS_KEY_ID'),
+                aws_secret_access_key=os.environ.get('CARTOONISTA_AWS_SECRET_ACCESS_KEY')
+
+            ) 
+            s3_object = s3.Object('cartoonista-files',image.cartoonified_image.name)
+            s3_object.metadata.update({'Content-Disposition':'attachment'})
+            s3_object.copy_from(CopySource={'Bucket':'cartoonista-files','Key':image.cartoonified_image.name}, Metadata=s3_object.metadata, MetadataDirective='REPLACE')
+           
             return render(request,'cartoonify/upload.html',context)
 
             
