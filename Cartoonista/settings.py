@@ -12,8 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('CARTOONISTA_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-DEBUG = True
+DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = ['127.0.0.1','funwithcartoonista.herokuapp.com']
 
@@ -168,12 +167,6 @@ AWS_S3_REGION_NAME = 'us-east-2'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
-# AWS_ACCESS_KEY_ID = 'AKIAV5O3QOJYMDIH2BO6'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'cartoonista'
-# AWS_S3_REGION_NAME = 'ap-south-1'
-# AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEBUG_PROPAGATE_EXCEPTIONS = True
